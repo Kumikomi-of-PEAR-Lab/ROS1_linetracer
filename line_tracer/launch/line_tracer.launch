@@ -1,0 +1,8 @@
+<launch>
+  <node pkg="uvc_camera" name="uvc_cam" type="uvc_camera_node"/>
+  <node pkg="image_view" name="img_raw" type="image_view" args="image:=/image_raw"/>
+ <node pkg="preprocess" name="preprocess" type="preprocess_node" args="$(arg width) $(arg height)"/>
+ <node pkg="line_tracer" name="line_tracer" type="line_tracer_node" args="/output_data 1"/>
+ <node pkg="line_tracer" name="p_control1" type="p_control_node" output="screen"/>
+ <node pkg="image_view" name="img_output_data" type="image_view" args="image:=/output_data"/>
+</launch>
